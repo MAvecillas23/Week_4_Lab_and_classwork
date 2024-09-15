@@ -1,0 +1,85 @@
+<!--basic list recorder... creates a list with the list items a user enters-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create List</title>
+</head>
+<body>
+<!--HTML-->
+  <p>Enter some text to add to the list</p>
+  <input id="new-text">
+  <button id="add-text">Add</button>
+  <button id="clear-list">Clear</button>
+
+  <ul id="list-of-text">
+
+
+  </ul>
+
+
+<script>
+
+    // assign HTML attributes to variables on Javascript
+    // buttons, lists, text input etc.
+  let textInput = document.querySelector('#new-text')
+  let addButton = document.querySelector('#add-text')
+  let textList = document.querySelector('#list-of-text')
+  let clearButton = document.querySelector('#clear-list')
+
+    // these will be used for data validation
+  let elementsInList = 0
+  let maxElements = 10
+
+    // this event listener connects the enter key on a keyboard to the addButton button
+  document.addEventListener('keyup', function() {
+      if (event.keyCode == 13) {
+          addButton.click()
+      }
+  })
+
+    // event listener for when the add button is clicked
+  addButton.addEventListener('click', function() {
+      // read the text in the input
+      let newText = textInput.value
+
+      // if user didn't enter anything in the text input
+      if (newText.length == 0) {
+          alert('Enter some text') // tell user and don't do anything else (return)
+          return
+      }
+
+      // if the items in a list are more than maxElements (10) tell user and don't do anything else (return)
+      if (elementsInList >= maxElements) {
+          alert('No more elements can be added')
+          return
+      }
+
+        // create a new li element
+      let newListItem = document.createElement('li')
+        // the li element text should be the text from the input
+      newListItem.innerHTML = newText
+
+          // add the new li element as a child of the ul element
+          textList.appendChild(newListItem)
+          // clear the text in the input
+          textInput.value = ''
+      elementsInList++
+
+
+  })
+
+    // when clear button is pressed, clear the textList list
+  clearButton.addEventListener('click', function() {
+      textList.innerHTML = ''
+      // resets elements in List counter to 0
+      elementsInList = 0
+  })
+
+
+</script>
+
+</body>
+</html>

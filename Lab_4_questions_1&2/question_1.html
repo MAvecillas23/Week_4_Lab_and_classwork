@@ -1,0 +1,94 @@
+<!--HTML/JS that allows user to input data and creates and displays a list of data entered-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a list</title>
+</head>
+<body>
+
+  <p>Enter things you'd like to add to your list:</p>
+
+<!--  HTML text input and an add and clear button-->
+  <input id="new-text">
+  <button id="add-text">Add</button>
+  <button id="clear-list">Clear</button>
+
+<!--  unordered list that will hold all the data entered-->
+  <ul id="text-list">
+
+  </ul>
+
+
+<script>
+// links variables to the HTML buttons and text input
+  let textInput = document.querySelector('#new-text') // text input
+  let addButton = document.querySelector('#add-text'); // add button
+  let textList = document.querySelector('#text-list') // this will hold the list of data
+  let clearButton = document.querySelector('#clear-list') // clear button
+
+// these variables are to keep track of number of items in list
+  let elementsInList = 0
+  let maxElements = 10
+
+
+// this code is to be able to use the enter button to add data to list
+// document event listener is for the whole webpage
+  document.addEventListener('keyup', function() {
+      // 13 is the key code for the enter button on a computers keyboard
+      if (event.keyCode == 13) {
+          addButton.click()  // addButton.click joins the add button to the enter key
+      }
+  })
+
+// event listener for when the add button is clicked
+  addButton.addEventListener('click', function() {
+    let newText = textInput.value // textInput.value gets the string of whatever the user entered and is assigned to newText
+
+      // if user didn't enter anything
+    if (newText.length === 0) {
+        // tells user...
+      alert('Enter text to add to your list')
+      return //exits the event listener and nothing is added
+
+        // if user enters over 50 characters
+    } else if (newText.length > 50) {
+      alert('The number of characters entered is over 50.\n' +  // tells user
+              'Enter characters less than 50')
+      return // exits event listener and nothing is added
+    }
+
+    // if items in list is more than the max items allowed (10)
+    if (elementsInList >= maxElements) {
+        // tells user
+      alert('Your list can only contain 10 items at a time.\n' +
+              'Clear your list to add items')
+
+    } else {
+        // if items in list is less than 10...
+        // creates a new list item
+      let newListItem = document.createElement('li')
+
+        // whatever user entered becomes the item
+      newListItem.innerHTML = newText
+
+        // newListItem is appended to the textList list
+      textList.appendChild(newListItem)
+      textInput.value = '' // clears the text input
+      elementsInList++  // elementsInList is goes up by one increment to keep track of the number of items in list
+    }
+
+  })
+
+// clear button that removes all items in list and resets the elementsInList counter
+  clearButton.addEventListener('click', function() {
+    textList.innerHTML = ''
+    elementsInList = 0
+  })
+
+
+</script>
+
+</body>
+</html>

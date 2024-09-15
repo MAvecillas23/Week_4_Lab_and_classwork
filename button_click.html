@@ -1,0 +1,50 @@
+<!--user clicks a button-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Click</title>
+</head>
+<body>
+<!--    creates a button -->
+    <button>Click here!</button>
+
+
+
+
+
+<!--<script> is where ALL the javascript code is written-->
+<script>
+// let button is like creating a variable... document is the webpage... query selector is to use css selectors to find
+// a html element that has contains a 'button'
+    let button = document.querySelector('button')
+
+// this creates an eventListener/ function connected to the button variable that when clicked displays a message
+    button.addEventListener('click', function() {
+        alert('You clicked the button!')
+        // this changes the text of the button after it is clicked
+        button.innerHTML = 'You clicked the button!'
+
+        // can use CSS styles as shown below
+        // when button is clicked button background color is changed to blue
+        button.style.backgroundColor = 'blue'
+
+        // button.remove() removes the button after its clicked
+
+    })
+
+// another way to write the code above (maybe easier to read)
+// this is a function similar to python... this function is executed when the eventListener calls it
+// function showAlert() {
+//      alert('You clicked the button!'  --- alert displays a message
+// }
+// button event listener that calls the showAlert function when the button/variable is clicked
+// button.addEventListener('click', showAlert)
+
+
+
+
+</script>
+</body>
+</html>

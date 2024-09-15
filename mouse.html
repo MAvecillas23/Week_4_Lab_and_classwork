@@ -1,0 +1,50 @@
+<!--Keeps track of how many times a mouse is hovered over a message on a webpage-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse</title>
+</head>
+<body>
+
+  <p id="mouse-me">Move your mouse here</p>
+
+
+
+
+<script>
+  // mouseCount will keep track of how many times mouse hovered over message
+  let mouseCount = 0
+
+  // example of using the mouseover event listener
+  let message = document.querySelector('#mouse-me')
+  message.addEventListener('mouseover', function() {
+    mouseCount++
+
+    // working with conditional statements
+    // if mouseCount is equal to 1 display message will be time instead of times
+    if (mouseCount == 1) {
+      message.innerHTML = 'Mouse has been on this message ' + mouseCount + ' time' // concatenating messages with mouseCount
+     }
+    // else display message will have times
+    else {
+      message.innerHTML = 'Your mouse has been on this message ' + mouseCount + ' times!'
+    }
+  })
+
+  // mouseout event listener is when the mouse is not hovering over message
+  message.addEventListener('mouseout', function() {
+    message.innerHTML = 'Your mouse is NOT on this message'
+  })
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+/*CSS stylesheet for tabs.html*/
+
+body {
+    background-color: cornsilk;
+}
+
+.tab-button {
+    background-color: lawngreen;
+    border: none;
+    padding: 10px;
+    margin: 1px;
+    outline: none;
+}
+
+.tab-button:hover {
+    background-color: white;
+}
+
+.tab-button.active {
+    background-color: aqua;
+}
+
+#tabs {
+    background-color: beige;
+    border: 1px solid black;
+}
+
+.tab-content {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px
+}

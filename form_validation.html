@@ -1,0 +1,47 @@
+
+<!--asks user to enter their name and greets them when the button is clicked-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+</head>
+<body>
+
+<!--HTML-->
+  <p>Please enter your name</p>
+  <input type="text" id="username">
+  <button id="save-user-name">Save</button>
+
+  <p id="welcome-message"></p>
+
+
+<script>
+    // HTML attributes assigned to javascript variables
+    // save button, username text input, and paragraph welcome message
+  let saveButton = document.querySelector('#save-user-name')
+  let nameInput = document.querySelector('#username')
+  let welcomeMessage = document.querySelector('#welcome-message')
+
+    // when the save button is clicked
+  saveButton.addEventListener('click', function() {
+      // name variable becomes whatever user entered as input
+    let name = nameInput.value
+
+      // data validation for a valid name
+    if (name.length < 2) {
+      welcomeMessage.innerHTML = 'Please enter at least 2 letters.'
+    } else {
+        // if name is valid the welcome message paragraph greets the user
+      welcomeMessage.innerHTML = `Welcome, ${name}!`
+    }
+  })
+
+
+
+
+</script>
+
+</body>
+</html>
